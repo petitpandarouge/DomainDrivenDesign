@@ -1,5 +1,3 @@
-using DomainDrivenDesign.Domain.Entities.MessageAggregate;
-
 namespace DomainDrivenDesign.Domain.Tests;
 
 public class MessageTests
@@ -12,7 +10,8 @@ public class MessageTests
         string titre = fixture.Create<string>();
         string description = fixture.Create<string>();
         IEnumerable<string> tags = fixture.CreateMany<string>();
-        DateTime now = DateTime.Now;
+        DateTime now = fixture.Create<DateTime>();
+        EtatMessage etat = EtatMessage.Brouillon;
 
         // Act
         Message message = new(titre, description, tags, now);
@@ -22,5 +21,6 @@ public class MessageTests
         message.Description.Should().Be(description);
         message.Tags.Should().Equal(tags);
         message.CreationDate.Should().Be(now);
+        message.Etat.Should().Be(etat);
     }
 }
