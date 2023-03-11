@@ -14,5 +14,6 @@ public class Message
         Description = description;
         Tags = tags.ToList().AsReadOnly();
         CreationDate = now;
+        Etat = EtatMessage.Brouillon;
     }
 }
