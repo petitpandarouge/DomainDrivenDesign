@@ -23,9 +23,9 @@
       <PrivateAssets>all</PrivateAssets>
     </PackageReference>
   </ItemGroup>
-
+    
   <ItemGroup>
-    <ProjectReference Include="..\DomainDrivenDesign.Domain\DomainDrivenDesign.Domain.csproj" />
+    <ProjectReference Include="..\DomainDrivenDesign.Application\DomainDrivenDesign.Application.csproj" />
   </ItemGroup>
 
 </Project>
