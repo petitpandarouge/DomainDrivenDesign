@@ -6,7 +6,7 @@ public class Message
     public string Description { get; }
     public IReadOnlyCollection<string> Tags { get; }
     public DateTime CreationDate { get; }
-    public EtatMessage Etat { get; }
+    public EtatMessage Etat { get; private set; }
 
     public Message(string titre, string description, IEnumerable<string> tags, DateTime now)
     {
@@ -19,6 +19,6 @@ public class Message
 
     public void Valider()
     {
-        throw new NotImplementedException();
+        Etat = EtatMessage.Publie;
     }
 }
