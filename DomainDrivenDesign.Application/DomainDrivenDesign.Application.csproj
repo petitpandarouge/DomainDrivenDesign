@@ -10,8 +10,4 @@
     <ProjectReference Include="..\DomainDrivenDesign.Domain\DomainDrivenDesign.Domain.csproj" />
   </ItemGroup>
 
-  <ItemGroup>
-    <Folder Include="Services\" />
-  </ItemGroup>
-
 </Project>

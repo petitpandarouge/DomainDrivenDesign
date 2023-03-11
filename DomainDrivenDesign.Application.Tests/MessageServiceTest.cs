@@ -26,6 +26,7 @@ public class MessageServiceTest
                         m.Titre == messageCreateDto.Titre &&
                         m.Description == messageCreateDto.Description &&
                         m.Tags.SequenceEqual(messageCreateDto.Tags) &&
+                        m.CreationDate == now &&
                         m.Etat == EtatMessage.Brouillon)),
                 Times.Once);
     }
