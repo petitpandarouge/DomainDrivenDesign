@@ -1,8 +1,8 @@
 ﻿namespace DomainDrivenDesign.Application.Dtos;
 
-public class MessageCreateDto
+public record MessageCreateDto
 {
-    public string Titre { get; set; }
-    public string Description { get; set; }
-    public IEnumerable<string> Tags { get; set; }
+    public string Titre { get; init; } = default!;
+    public string Description { get; init; } = default!;
+    public IEnumerable<string> Tags { get; init; } = default!;
 }
