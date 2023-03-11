@@ -16,4 +16,9 @@ public class Message
         CreationDate = now;
         Etat = EtatMessage.Brouillon;
     }
+
+    public void Valider()
+    {
+        throw new NotImplementedException();
+    }
 }

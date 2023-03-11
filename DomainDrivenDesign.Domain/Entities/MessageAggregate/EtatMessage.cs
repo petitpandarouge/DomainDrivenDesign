@@ -3,5 +3,6 @@
 public enum EtatMessage
 {
     None,
-    Brouillon
+    Brouillon,
+    Publie
 }
