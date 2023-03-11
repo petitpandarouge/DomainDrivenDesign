@@ -2,7 +2,6 @@
 
 public enum EtatMessage
 {
-    None,
     Brouillon,
     Publie
 }
