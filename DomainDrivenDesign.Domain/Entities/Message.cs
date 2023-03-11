@@ -2,7 +2,14 @@
 
 public class Message
 {
-    public string Titre { get; set; } = string.Empty;
-    public string Description { get; set; } = string.Empty;
-    public IEnumerable<string> Tags { get; set; } = new List<string>();
+    public string Titre { get; }
+    public string Description { get; }
+    public IEnumerable<string> Tags { get; }
+
+    public Message(string titre, string description, IEnumerable<string> tags)
+    {
+        Titre = titre;
+        Description = description;
+        Tags = tags;
+    }
 }
