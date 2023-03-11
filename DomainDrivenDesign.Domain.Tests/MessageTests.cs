@@ -12,13 +12,15 @@ public class MessageTests
         string titre = fixture.Create<string>();
         string description = fixture.Create<string>();
         IEnumerable<string> tags = fixture.CreateMany<string>();
+        DateTime now = DateTime.Now;
 
         // Act
-        Message message = new(titre, description, tags);
+        Message message = new(titre, description, tags, now);
 
         // Assert
         message.Titre.Should().Be(titre);
         message.Description.Should().Be(description);
         message.Tags.Should().Equal(tags);
+        message.CreationDate.Should().Be(now);
     }
 }
