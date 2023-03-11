@@ -1,5 +1,6 @@
 ﻿using DomainDrivenDesign.Application.Dtos;
 using DomainDrivenDesign.Application.Infrastructure;
+using DomainDrivenDesign.Domain.Entities.MessageAggregate;
 
 namespace DomainDrivenDesign.Application.Services;
 
@@ -16,6 +17,7 @@ public class MessageService : IMessageService
 
     public void Create(MessageCreateDto messageCreateDto)
     {
-        throw new NotImplementedException();
+        var message = new Message(messageCreateDto.Titre, messageCreateDto.Description, messageCreateDto.Tags, _dateTimeProvider.Now());
+        _messageRepository.Insert(message);
     }
 }
