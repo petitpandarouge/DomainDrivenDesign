@@ -23,4 +23,18 @@ public class MessageTests
         message.CreationDate.Should().Be(now);
         message.Etat.Should().Be(etat);
     }
+
+    [Theory, AutoData]
+    public void Given_a_message_brouillon_When_I_validate_it_Then_it_is_published
+        (string titre, string description, IEnumerable<string> tags, DateTime now)
+    {
+        // Arrange
+        Message message = new(titre, description, tags, now);
+
+        // Act
+        message.Valider();
+
+        // Assert
+        message.Etat.Should().Be(EtatMessage.Publie);
+    }
 }
