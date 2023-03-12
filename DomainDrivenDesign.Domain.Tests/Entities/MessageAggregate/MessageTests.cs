@@ -13,7 +13,7 @@ public class MessageTests
         Message message = new(titre, description, tags, now);
 
         // Assert
-        message.Titre.Should().Be(titre);
+        message.Titre.Should().Be((Titre)titre);
         message.Description.Should().Be(description);
         message.Tags.Should().Equal(tags);
         message.CreationDate.Should().Be(now);
