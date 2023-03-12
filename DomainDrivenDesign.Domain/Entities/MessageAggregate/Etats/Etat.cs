@@ -3,5 +3,6 @@
 public enum Etat
 {
     Brouillon,
-    Publie
+    Publie,
+    Deleting
 }

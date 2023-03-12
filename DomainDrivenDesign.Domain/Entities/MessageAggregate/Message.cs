@@ -4,6 +4,7 @@ public partial class Message
 {
     private readonly Brouillon _etatBrouillon;
     private readonly Publie _etatPublie;
+    private readonly Deleting _etatDeleting;
     private IEtatCommands _etat;
 
     private Titre _titre = default!;
@@ -14,8 +15,9 @@ public partial class Message
     /// </summary>
     public Message(Titre titre, string description, IEnumerable<string> tags, DateTime now)
     {
-        _etatBrouillon = new Brouillon(this);
-        _etatPublie = new Publie(this);
+        _etatBrouillon = new (this);
+        _etatPublie = new (this);
+        _etatDeleting = new (this);
         _etat = _etatBrouillon;
 
         Titre = titre;
@@ -54,6 +56,8 @@ public partial class Message
 
     public Guid Delete()
     {
-        throw new NotImplementedException();
+        var id = Id;
+        _etat.Delete();
+        return id;
     }
 }

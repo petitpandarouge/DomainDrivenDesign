@@ -14,6 +14,11 @@ public partial class Message
 
         public override Etat AsEnum() => Etat.Publie;
 
+        public override void Delete()
+        {
+            throw new NotImplementedException();
+        }
+
         public override void SetTitre(Titre titre)
         {
             throw new InvalidOperationException(MSG_CANNOT_BE_MODIFIED_ERROR_MSG);
