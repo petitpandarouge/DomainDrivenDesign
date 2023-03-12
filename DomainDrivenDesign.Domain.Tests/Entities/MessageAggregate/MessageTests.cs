@@ -64,6 +64,6 @@ public class MessageTests
         act
             .Should()
             .ThrowExactly<InvalidOperationException>()
-            .WithMessage("Le message est publié, il ne peut plus être modifié.");
+            .WithMessage(Message.Publie.MSG_CANNOT_BE_MODIFIED_ERROR_MSG);
     }
 }

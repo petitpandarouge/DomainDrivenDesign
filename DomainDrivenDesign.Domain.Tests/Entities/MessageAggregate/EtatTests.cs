@@ -35,6 +35,6 @@ public class EtatTests : IClassFixture<EtatFixture>
         act
             .Should()
             .ThrowExactly<InvalidOperationException>()
-            .WithMessage("Seul un brouillon peut être validé.");
+            .WithMessage(EtatCommands.ONLY_BROUILLON_CAN_BE_VALIDE_ERROR_MSG);
     }
 }

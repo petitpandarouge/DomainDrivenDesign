@@ -32,6 +32,6 @@ public class TitreTests
         act
             .Should()
             .ThrowExactly<InvalidOperationException>()
-            .WithMessage("Le titre ne doit pas faire plus de 50 caractères.");
+            .WithMessage(Titre.MORE_THAN_50_CHAR_ERROR_MSG);
     }
 }
