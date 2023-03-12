@@ -44,6 +44,7 @@ public abstract class ValueObject
         return _cachedHashCode.Value;
     }
 
+    [System.Diagnostics.CodeAnalysis.SuppressMessage("Style", "IDE0046:Convert to conditional expression", Justification = "Readability.")]
     public static bool operator ==(ValueObject a, ValueObject b)
     {
         if (a is null && b is null)

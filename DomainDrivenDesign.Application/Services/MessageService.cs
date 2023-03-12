@@ -20,4 +20,9 @@ public class MessageService : IMessageService
         var message = new Message(messageCreateDto.Titre, messageCreateDto.Description, messageCreateDto.Tags, _dateTimeProvider.Now());
         _messageRepository.Insert(message);
     }
+
+    public void Valider(Guid id)
+    {
+        throw new NotImplementedException();
+    }
 }
