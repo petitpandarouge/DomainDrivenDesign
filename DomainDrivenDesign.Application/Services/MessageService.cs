@@ -21,6 +21,11 @@ public class MessageService : IMessageService
         _messageRepository.Insert(message);
     }
 
+    public void Delete(Guid id)
+    {
+        throw new NotImplementedException();
+    }
+
     public void Valider(Guid id)
     {
         var message = _messageRepository.Get(id);
