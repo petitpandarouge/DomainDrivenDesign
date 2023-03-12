@@ -6,6 +6,6 @@ public class Titre
 
     public Titre(string titre)
     {
-        _titre = titre;
+        _titre = titre ?? throw new ArgumentNullException(nameof(titre));
     }
 }
