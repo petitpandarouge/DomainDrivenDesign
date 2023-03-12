@@ -10,5 +10,6 @@ public abstract class EtatCommands : IEtatCommands
     protected Message Message { get; }
 
     public abstract Etat AsEnum();
+    public abstract void SetTitre(Titre titre);
     public abstract void Valider();
 }

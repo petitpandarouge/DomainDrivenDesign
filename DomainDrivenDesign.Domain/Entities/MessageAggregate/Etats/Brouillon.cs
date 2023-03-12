@@ -12,6 +12,11 @@ public partial class Message
 
         public override Etat AsEnum() => Etat.Brouillon;
 
+        public override void SetTitre(Titre titre)
+        {
+            Message._titre = titre;
+        }
+
         public override void Valider()
         {
             Message._etat = Message._etatPublie;
