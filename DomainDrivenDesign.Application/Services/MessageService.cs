@@ -25,6 +25,7 @@ public class MessageService : IMessageService
     {
         var message = _messageRepository.Get(id);
         message.Valider();
-        _messageRepository.Update(message);
+        _messageRepository.UpdateEtat(Guid.NewGuid(), Etat.Brouillon);
+        //_messageRepository.UpdateEtat(message.Id, message.Etat);
     }
 }
