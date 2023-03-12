@@ -1,8 +1,8 @@
-﻿namespace DomainDrivenDesign.Domain.Tests;
+﻿namespace DomainDrivenDesign.Domain.Tests.Entities.MessageAggregate;
 
-public class EtatMessageFixture
+public class EtatFixture
 {
-    public EtatMessageFixture()
+    public EtatFixture()
     {
         Fixture fixture = new();
         string titre = fixture.Create<string>();

@@ -1,10 +1,10 @@
-namespace DomainDrivenDesign.Domain.Tests;
+namespace DomainDrivenDesign.Domain.Tests.Entities.MessageAggregate;
 
-public class EtatMessageTests : IClassFixture<EtatMessageFixture>
+public class EtatTests : IClassFixture<EtatFixture>
 {
-    private readonly EtatMessageFixture _fixture;
+    private readonly EtatFixture _fixture;
 
-    public EtatMessageTests(EtatMessageFixture fixture)
+    public EtatTests(EtatFixture fixture)
     {
         _fixture = fixture;
     }

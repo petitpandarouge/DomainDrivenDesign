@@ -1,4 +1,4 @@
-namespace DomainDrivenDesign.Domain.Tests;
+namespace DomainDrivenDesign.Domain.Tests.Entities.MessageAggregate;
 
 public class MessageTests
 {
