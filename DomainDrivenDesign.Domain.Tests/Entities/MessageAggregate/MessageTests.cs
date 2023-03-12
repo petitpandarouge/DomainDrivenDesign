@@ -21,16 +21,32 @@ public class MessageTests
     }
 
     [Theory, AutoData]
-    public void Given_a_message_brouillon_When_I_valide_it_Then_it_is_publie
+    public void Given_a_message_brouillon_When_I_valide_it_Then_its_etat_is_publie
         (string titre, string description, IEnumerable<string> tags, DateTime now)
     {
         // Arrange
-        Message message = new(titre, description, tags, now);
+        Message message = MessageFactory.CreateIdentifiedBrouillon(titre, description, tags, now);
 
         // Act
         message.Valider();
 
         // Assert
         message.Etat.Should().Be(Etat.Publie);
+    }
+
+    [Theory, AutoData]
+    public void Given_a_message_brouillon_When_I_update_its_titre_or_description_Then_modifications_are_taken_in_account
+        (string titre, string description, IEnumerable<string> tags, DateTime now, string newTitre, string newDescription)
+    {
+        // Arrange
+        Message message = MessageFactory.CreateIdentifiedBrouillon(titre, description, tags, now);
+
+        // Act
+        message.Titre = newTitre;
+        message.Description = newDescription;
+
+        // Assert
+        message.Titre.Should().Be((Titre)newTitre);
+        message.Description.Should().Be((Titre)newDescription);
     }
 }

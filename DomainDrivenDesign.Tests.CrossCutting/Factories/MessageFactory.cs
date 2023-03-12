@@ -1,8 +1,6 @@
-﻿using AutoFixture;
+﻿namespace DomainDrivenDesign.Tests.CrossCutting.Factories;
 
-namespace DomainDrivenDesign.Application.Tests.Factories;
-
-internal static class MessageFactory
+public static class MessageFactory
 {
     public static Message CreateIdentifiedBrouillon(string titre, string description, IEnumerable<string> tags, DateTime now)
     {

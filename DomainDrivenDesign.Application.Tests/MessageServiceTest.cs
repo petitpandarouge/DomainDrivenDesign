@@ -1,6 +1,3 @@
-using DomainDrivenDesign.Application.Tests.Factories;
-using FluentAssertions;
-
 namespace DomainDrivenDesign.Application.Tests;
 
 public class MessageServiceTest
