@@ -49,4 +49,21 @@ public class MessageTests
         message.Titre.Should().Be((Titre)newTitre);
         message.Description.Should().Be((Titre)newDescription);
     }
+
+    [Theory, AutoData]
+    public void Given_a_message_publie_When_I_update_its_titre_Then_should_throw_exception
+        (string titre, string description, IEnumerable<string> tags, DateTime now, string newTitre)
+    {
+        // Arrange
+        Message message = MessageFactory.CreateIdentifiedMessagePublie(titre, description, tags, now);
+
+        // Act
+        var act = () => message.Titre = newTitre;
+
+        // Assert
+        act
+            .Should()
+            .ThrowExactly<InvalidOperationException>()
+            .WithMessage("Le message est publié, il ne peut plus être modifié.");
+    }
 }
