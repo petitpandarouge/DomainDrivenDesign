@@ -56,16 +56,11 @@ public class MessageServiceTest
         service.Valider(message.Id);
 
         // Assert
-        messageRepositoryMock.Verify(r => r.Get(message.Id), Times.Once);
         messageRepositoryMock.Verify(
-            // TODO : UpdateEtat
-            r => r.Update(It.Is<Message>(
-                m =>
-                    m.Titre == message.Titre &&
-                    m.Description == message.Description &&
-                    m.Tags.SequenceEqual(message.Tags) &&
-                    m.CreationDate == now &&
-                    m.Etat == Etat.Publie)),
+            r => r.Get(message.Id), 
+            Times.Once);
+        messageRepositoryMock.Verify(
+            r => r.UpdateEtat(message.Id, Etat.Publie),
             Times.Once);
     }
 }
