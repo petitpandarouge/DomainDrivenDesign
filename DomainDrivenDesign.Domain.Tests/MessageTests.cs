@@ -21,7 +21,7 @@ public class MessageTests
     }
 
     [Theory, AutoData]
-    public void Given_a_message_brouillon_When_I_validate_it_Then_it_is_published
+    public void Given_a_message_brouillon_When_I_valide_it_Then_it_is_publie
         (string titre, string description, IEnumerable<string> tags, DateTime now)
     {
         // Arrange
