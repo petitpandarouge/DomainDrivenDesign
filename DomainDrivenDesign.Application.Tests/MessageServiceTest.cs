@@ -70,22 +70,25 @@ public class MessageServiceTest
         IDateTimeProvider dateTimeProvider = dateTimeProviderMock.Object;
 
         var message = MessageFactory.CreateIdentifiedBrouillon(titre, description, tags, now);
+        // The message id is erased by the delete method.
+        var idMessage = message.Id;
 
         Mock<IMessageRepository> messageRepositoryMock = new();
         messageRepositoryMock.Setup(x => x.Get(message.Id)).Returns(message);
         IMessageRepository messageRepository = messageRepositoryMock.Object;
 
         IMessageService service = new MessageService(dateTimeProvider, messageRepository);
+        
 
         // Act
-        service.Delete(message.Id);
+        service.Delete(idMessage);
 
         // Assert
         messageRepositoryMock.Verify(
-            r => r.Get(message.Id),
+            r => r.Get(idMessage),
             Times.Once);
         messageRepositoryMock.Verify(
-            r => r.Delete(message.Id),
+            r => r.Delete(idMessage),
             Times.Once);
     }
 }

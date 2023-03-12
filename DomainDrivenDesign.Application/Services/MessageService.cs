@@ -23,7 +23,9 @@ public class MessageService : IMessageService
 
     public void Delete(Guid id)
     {
-        throw new NotImplementedException();
+        var message = _messageRepository.Get(id);
+        var idToDelete = message.Delete();
+        _messageRepository.Delete(idToDelete);
     }
 
     public void Valider(Guid id)
