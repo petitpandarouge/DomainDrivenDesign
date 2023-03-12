@@ -19,6 +19,7 @@ public class Titre : ValueObject
         Value = titre;
     }
 
+    public static Titre Empty => new(string.Empty);
     public string Value { get; }
 
     protected override IEnumerable<object> GetEqualityComponents()

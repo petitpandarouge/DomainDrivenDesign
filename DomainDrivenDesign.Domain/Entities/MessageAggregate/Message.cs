@@ -51,4 +51,9 @@ public partial class Message
     {
         _etat.Valider();
     }
+
+    public Guid Delete()
+    {
+        throw new NotImplementedException();
+    }
 }
