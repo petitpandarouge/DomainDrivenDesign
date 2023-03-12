@@ -18,4 +18,20 @@ public class TitreTests
             .Should()
             .ThrowExactly<ArgumentNullException>();
     }
+
+    [Fact]
+    public void Given_a_titre_of_more_than_50_char_When_I_create_it_Then_it_should_throw_an_exception()
+    {
+        // Arrange
+        string titre = "Mon titre d'une longueur de 51 caractères la la lèr";
+
+        // Act
+        var act = () => new Titre(titre);
+
+        // Assert
+        act
+            .Should()
+            .ThrowExactly<InvalidOperationException>()
+            .WithMessage("Le titre ne doit pas faire plus de 50 caractères.");
+    }
 }
