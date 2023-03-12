@@ -25,14 +25,14 @@ public class MessageServiceTest
         // Assert
         dateTimeProviderMock.Verify(p => p.Now(), Times.Once);
         messageRepositoryMock.Verify(
-                r => r.Insert(It.Is<Message>(
-                    m =>
-                        m.Titre == messageCreateDto.Titre &&
-                        m.Description == messageCreateDto.Description &&
-                        m.Tags.SequenceEqual(messageCreateDto.Tags) &&
-                        m.CreationDate == now &&
-                        m.Etat == Etat.Brouillon)),
-                Times.Once);
+            r => r.Insert(It.Is<Message>(
+                m =>
+                    m.Titre == messageCreateDto.Titre &&
+                    m.Description == messageCreateDto.Description &&
+                    m.Tags.SequenceEqual(messageCreateDto.Tags) &&
+                    m.CreationDate == now &&
+                    m.Etat == Etat.Brouillon)),
+            Times.Once);
     }
 
     [Theory, AutoData]
@@ -57,13 +57,13 @@ public class MessageServiceTest
         // Assert
         messageRepositoryMock.Verify(r => r.Get(message.Id), Times.Once);
         messageRepositoryMock.Verify(
-                r => r.Update(It.Is<Message>(
-                    m =>
-                        m.Titre == message.Titre &&
-                        m.Description == message.Description &&
-                        m.Tags.SequenceEqual(message.Tags) &&
-                        m.CreationDate == now &&
-                        m.Etat == Etat.Publie)),
-                Times.Once);
+            r => r.Update(It.Is<Message>(
+                m =>
+                    m.Titre == message.Titre &&
+                    m.Description == message.Description &&
+                    m.Tags.SequenceEqual(message.Tags) &&
+                    m.CreationDate == now &&
+                    m.Etat == Etat.Publie)),
+            Times.Once);
     }
 }

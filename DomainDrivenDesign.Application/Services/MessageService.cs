@@ -23,6 +23,8 @@ public class MessageService : IMessageService
 
     public void Valider(Guid id)
     {
-        throw new NotImplementedException();
+        var message = _messageRepository.Get(id);
+        message.Valider();
+        _messageRepository.Update(message);
     }
 }
