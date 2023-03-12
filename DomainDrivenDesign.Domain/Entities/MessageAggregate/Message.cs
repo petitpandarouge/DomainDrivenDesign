@@ -24,8 +24,8 @@ public partial class Message
 
     // TODO : Ne permettre le set que si id est empty et Guid => class Id
     public Guid Id { get; set; }
-    public Titre Titre { get; }
-    public string Description { get; }
+    public Titre Titre { get; set; }
+    public string Description { get; set; }
     /// <summary>
     /// See : https://enterprisecraftsmanship.com/posts/which-collection-interface-to-use/
     /// </summary>
