@@ -27,7 +27,7 @@ public class MessageServiceTest
                         m.Description == messageCreateDto.Description &&
                         m.Tags.SequenceEqual(messageCreateDto.Tags) &&
                         m.CreationDate == now &&
-                        m.Etat == EtatMessage.Brouillon)),
+                        m.Etat == Etat.Brouillon)),
                 Times.Once);
     }
 }

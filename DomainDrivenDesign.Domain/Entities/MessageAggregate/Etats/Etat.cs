@@ -1,6 +1,6 @@
 ﻿namespace DomainDrivenDesign.Domain.Entities.MessageAggregate;
 
-public enum EtatMessage
+public enum Etat
 {
     Brouillon,
     Publie

@@ -1,12 +1,10 @@
 ﻿namespace DomainDrivenDesign.Domain.Entities.MessageAggregate;
 
-public class Message
+public partial class Message
 {
-    public string Titre { get; }
-    public string Description { get; }
-    public IReadOnlyCollection<string> Tags { get; }
-    public DateTime CreationDate { get; }
-    public EtatMessage Etat { get; private set; }
+    private readonly IEtatCommands _etatBrouillon;
+    private readonly IEtatCommands _etatPublie;
+    private IEtatCommands _etat;
 
     public Message(string titre, string description, IEnumerable<string> tags, DateTime now)
     {
@@ -14,11 +12,20 @@ public class Message
         Description = description;
         Tags = tags.ToList().AsReadOnly();
         CreationDate = now;
-        Etat = EtatMessage.Brouillon;
+
+        _etatBrouillon = new Brouillon(this);
+        _etatPublie = new Publie(this);
+        _etat = _etatBrouillon;
     }
+
+    public string Titre { get; }
+    public string Description { get; }
+    public IReadOnlyCollection<string> Tags { get; }
+    public DateTime CreationDate { get; }
+    public Etat Etat => _etat.AsEnum();
 
     public void Valider()
     {
-        Etat = EtatMessage.Publie;
+        _etat.Valider();
     }
 }

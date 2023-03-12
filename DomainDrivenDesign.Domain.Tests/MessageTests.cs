@@ -11,7 +11,7 @@ public class MessageTests
         string description = fixture.Create<string>();
         IEnumerable<string> tags = fixture.CreateMany<string>();
         DateTime now = fixture.Create<DateTime>();
-        EtatMessage etat = EtatMessage.Brouillon;
+        Etat etat = Etat.Brouillon;
 
         // Act
         Message message = new(titre, description, tags, now);
@@ -35,6 +35,6 @@ public class MessageTests
         message.Valider();
 
         // Assert
-        message.Etat.Should().Be(EtatMessage.Publie);
+        message.Etat.Should().Be(Etat.Publie);
     }
 }
