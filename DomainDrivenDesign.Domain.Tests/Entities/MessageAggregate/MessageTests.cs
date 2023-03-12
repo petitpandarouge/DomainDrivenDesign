@@ -47,7 +47,7 @@ public class MessageTests
 
         // Assert
         message.Titre.Should().Be((Titre)newTitre);
-        message.Description.Should().Be((Titre)newDescription);
+        message.Description.Should().Be(newDescription);
     }
 
     [Theory, AutoData]
@@ -65,5 +65,23 @@ public class MessageTests
             .Should()
             .ThrowExactly<InvalidOperationException>()
             .WithMessage(Message.Publie.MSG_CANNOT_BE_MODIFIED_ERROR_MSG);
+    }
+
+    [Theory, AutoData]
+    public void Given_a_message_brouillon_When_I_delete_it_Then_all_the_properties_are_cleared
+        (string titre, string description, IEnumerable<string> tags, DateTime now)
+    {
+        // Arrange
+        Message message = MessageFactory.CreateIdentifiedBrouillon(titre, description, tags, now);
+        Guid idInit = message.Id;
+
+        // Act
+        Guid id = message.Delete();
+
+        // Assert
+        id.Should().Be(idInit);
+        message.Titre.Should().Be(Titre.Empty);
+        message.Description.Should().Be(string.Empty);
+        message.Tags.Should().BeEmpty();
     }
 }
