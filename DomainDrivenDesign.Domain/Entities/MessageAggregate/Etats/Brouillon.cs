@@ -2,7 +2,7 @@
 
 public partial class Message
 {
-    public class Brouillon : AbstractEtatCommands
+    public class Brouillon : EtatCommands
     {
         public Brouillon(Message message)
             : base(message)

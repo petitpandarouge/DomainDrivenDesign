@@ -1,8 +1,8 @@
 ﻿namespace DomainDrivenDesign.Domain.Entities.MessageAggregate;
 
-public abstract class AbstractEtatCommands : IEtatCommands
+public abstract class EtatCommands : IEtatCommands
 {
-    protected AbstractEtatCommands(Message message)
+    protected EtatCommands(Message message)
     {
         Message = message;
     }

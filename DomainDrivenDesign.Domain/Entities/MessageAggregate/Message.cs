@@ -6,8 +6,9 @@ public partial class Message
     private readonly Publie _etatPublie;
     private IEtatCommands _etat;
 
-    // TODO : Titre et description sous forme de value object
-    // https://enterprisecraftsmanship.com/posts/domain-model-purity-current-time/
+    /// <summary>
+    /// See: https://enterprisecraftsmanship.com/posts/domain-model-purity-current-time/
+    /// </summary>
     public Message(string titre, string description, IEnumerable<string> tags, DateTime now)
     {
         Titre = titre;

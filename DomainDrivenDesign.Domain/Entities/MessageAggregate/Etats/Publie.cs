@@ -2,7 +2,7 @@
 
 public partial class Message
 {
-    public class Publie : AbstractEtatCommands
+    public class Publie : EtatCommands
     {
         public Publie(Message message)
             : base(message)
