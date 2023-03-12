@@ -1,7 +1,9 @@
-﻿using DomainDrivenDesign.Domain.Core;
+﻿using System.Diagnostics;
+using DomainDrivenDesign.Domain.Core;
 
 namespace DomainDrivenDesign.Domain.Entities.MessageAggregate;
 
+[DebuggerDisplay("{Value}")]
 public class Titre : ValueObject
 {
     public const string MORE_THAN_50_CHAR_ERROR_MSG = "Le titre ne doit pas faire plus de 50 caractères.";
