@@ -1,4 +1,5 @@
 using DomainDrivenDesign.Application.Tests.Factories;
+using FluentAssertions;
 
 namespace DomainDrivenDesign.Application.Tests;
 
@@ -43,7 +44,7 @@ public class MessageServiceTest
         Mock<IDateTimeProvider> dateTimeProviderMock = new();
         IDateTimeProvider dateTimeProvider = dateTimeProviderMock.Object;
 
-        var message = MessageFactory.CreateBrouillon(titre, description, tags, now);
+        var message = MessageFactory.CreateIdentifiedBrouillon(titre, description, tags, now);
 
         Mock<IMessageRepository> messageRepositoryMock = new();
         messageRepositoryMock.Setup(x => x.Get(message.Id)).Returns(message);
@@ -57,6 +58,7 @@ public class MessageServiceTest
         // Assert
         messageRepositoryMock.Verify(r => r.Get(message.Id), Times.Once);
         messageRepositoryMock.Verify(
+            // TODO : UpdateEtat
             r => r.Update(It.Is<Message>(
                 m =>
                     m.Titre == message.Titre &&

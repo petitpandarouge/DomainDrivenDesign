@@ -22,6 +22,7 @@ public partial class Message
         _etat = _etatBrouillon;
     }
 
+    // TODO : Ne permettre le set que si id est empty et Guid => class Id
     public Guid Id { get; set; }
     public Titre Titre { get; }
     public string Description { get; }
