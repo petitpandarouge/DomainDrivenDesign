@@ -6,7 +6,13 @@ public class Titre : ValueObject
 {
     public Titre(string titre)
     {
-        Value = titre ?? throw new ArgumentNullException(nameof(titre));
+        titre = titre ?? throw new ArgumentNullException(nameof(titre));
+        if (titre.Length > 50)
+        {
+            throw new InvalidOperationException("Le titre ne doit pas faire plus de 50 caractères.");
+        }
+
+        Value = titre;
     }
 
     public string Value { get; }
