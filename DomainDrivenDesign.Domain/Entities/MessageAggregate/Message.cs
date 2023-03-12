@@ -2,8 +2,8 @@
 
 public partial class Message
 {
-    private readonly IEtatCommands _etatBrouillon;
-    private readonly IEtatCommands _etatPublie;
+    private readonly Brouillon _etatBrouillon;
+    private readonly Publie _etatPublie;
     private IEtatCommands _etat;
 
     public Message(string titre, string description, IEnumerable<string> tags, DateTime now)
