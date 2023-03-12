@@ -9,7 +9,7 @@ public partial class Message
     /// <summary>
     /// See: https://enterprisecraftsmanship.com/posts/domain-model-purity-current-time/
     /// </summary>
-    public Message(string titre, string description, IEnumerable<string> tags, DateTime now)
+    public Message(Titre titre, string description, IEnumerable<string> tags, DateTime now)
     {
         Titre = titre;
         Description = description;
@@ -21,7 +21,7 @@ public partial class Message
         _etat = _etatBrouillon;
     }
 
-    public string Titre { get; }
+    public Titre Titre { get; }
     public string Description { get; }
     public IReadOnlyCollection<string> Tags { get; }
     public DateTime CreationDate { get; }

@@ -1,11 +1,21 @@
-﻿namespace DomainDrivenDesign.Domain.Entities.MessageAggregate;
+﻿using DomainDrivenDesign.Domain.Core;
 
-public class Titre
+namespace DomainDrivenDesign.Domain.Entities.MessageAggregate;
+
+public class Titre : ValueObject
 {
-    private readonly string _titre;
-
     public Titre(string titre)
     {
-        _titre = titre ?? throw new ArgumentNullException(nameof(titre));
+        Value = titre ?? throw new ArgumentNullException(nameof(titre));
     }
+
+    public string Value { get; }
+
+    protected override IEnumerable<object> GetEqualityComponents()
+    {
+        yield return Value;
+    }
+
+    public static implicit operator string(Titre titre) => titre.Value;
+    public static implicit operator Titre(string titre) => new(titre);
 }
