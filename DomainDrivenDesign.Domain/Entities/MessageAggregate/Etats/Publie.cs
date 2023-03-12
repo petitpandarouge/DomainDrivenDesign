@@ -14,7 +14,7 @@ public partial class Message
 
         public override void Valider()
         {
-            throw new NotImplementedException();
+            throw new InvalidOperationException("Seul un brouillon peut être validé.");
         }
     }
 }
