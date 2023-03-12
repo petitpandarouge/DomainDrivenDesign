@@ -66,4 +66,19 @@ public class EtatTests : IClassFixture<EtatFixture>
             .ThrowExactly<InvalidOperationException>()
             .WithMessage(Message.Publie.MSG_CANNOT_BE_MODIFIED_ERROR_MSG);
     }
+
+
+    [Fact]
+    public void Given_a_etat_brouillon_When_I_delete_the_message_Then_the_Id_property_is_cleared_and_the_message_etat_is_deleting()
+    {
+        // Arrange
+        // Nothing to do.
+
+        // Act
+        _fixture.EtatBrouillon.Delete();
+
+        // Assert
+        _fixture.Message.Id.Should().Be(Guid.Empty);
+        _fixture.Message.Etat.Should().Be(Etat.Deleting);
+    }
 }

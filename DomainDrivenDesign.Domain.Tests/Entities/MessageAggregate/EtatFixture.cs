@@ -11,11 +11,13 @@ public class EtatFixture
         DateTime now = fixture.Create<DateTime>();
 
         Message = new(titre, description, tags, now);
-        EtatBrouillon = new Message.Brouillon(Message);
-        EtatPublie = new Message.Publie(Message);
+        EtatBrouillon = new (Message);
+        EtatPublie = new (Message);
+        EtatDeleting = new(Message);
     }
 
     public Message Message { get; }
     public Message.Brouillon EtatBrouillon { get; }
     public Message.Publie EtatPublie { get; }
+    public Message.Deleting EtatDeleting { get; }
 }

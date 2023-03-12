@@ -68,7 +68,7 @@ public class MessageTests
     }
 
     [Theory, AutoData]
-    public void Given_a_message_brouillon_When_I_delete_it_Then_all_the_properties_are_cleared
+    public void Given_a_message_brouillon_When_I_delete_it_Then_the_returned_Id_must_be_the_one_of_the_message_to_delete
         (string titre, string description, IEnumerable<string> tags, DateTime now)
     {
         // Arrange
@@ -80,8 +80,7 @@ public class MessageTests
 
         // Assert
         id.Should().Be(idInit);
-        message.Titre.Should().Be(Titre.Empty);
-        message.Description.Should().Be(string.Empty);
-        message.Tags.Should().BeEmpty();
+        message.Id.Should().Be(Guid.Empty);
+        message.Etat.Should().Be(Etat.Deleting);
     }
 }
