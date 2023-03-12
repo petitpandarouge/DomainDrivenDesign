@@ -54,10 +54,38 @@ public class MessageServiceTest
 
         // Assert
         messageRepositoryMock.Verify(
-            r => r.Get(message.Id), 
+            r => r.Get(message.Id),
             Times.Once);
         messageRepositoryMock.Verify(
             r => r.UpdateEtat(message.Id, Etat.Publie),
+            Times.Once);
+    }
+
+    [Theory, AutoData]
+    public void Given_a_message_brouillon_When_I_delete_it_Then_the_message_cannot_be_recovered
+        (string titre, string description, IEnumerable<string> tags, DateTime now)
+    {
+        // Arrange
+        Mock<IDateTimeProvider> dateTimeProviderMock = new();
+        IDateTimeProvider dateTimeProvider = dateTimeProviderMock.Object;
+
+        var message = MessageFactory.CreateIdentifiedBrouillon(titre, description, tags, now);
+
+        Mock<IMessageRepository> messageRepositoryMock = new();
+        messageRepositoryMock.Setup(x => x.Get(message.Id)).Returns(message);
+        IMessageRepository messageRepository = messageRepositoryMock.Object;
+
+        IMessageService service = new MessageService(dateTimeProvider, messageRepository);
+
+        // Act
+        service.Delete(message.Id);
+
+        // Assert
+        messageRepositoryMock.Verify(
+            r => r.Get(message.Id),
+            Times.Once);
+        messageRepositoryMock.Verify(
+            r => r.Delete(message.Id),
             Times.Once);
     }
 }
